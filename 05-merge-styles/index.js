@@ -12,7 +12,7 @@ fs.readdir(path.resolve(__dirname, 'styles'), {withFileTypes: true}, (err,files)
 stream.on('readable', () => {
   const data = stream.read();
   if (data) {
-    console.log(data);
+    fs.promises.appendFile(path.join('05-merge-styles/styles', 'bundle.css'), data);
   }
 })
     
