@@ -43,9 +43,7 @@ function createDir(){
 
 
 async function writed(element) {
-    const output = fs.createWriteStream("06-build-page/project-dist/index.html");
-    output.write(element)
-   
+   await fs.createWriteStream("06-build-page/project-dist/index.html").write(element);
 }
 
 
