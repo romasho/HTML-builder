@@ -19,11 +19,20 @@ fs.readdir(pathCopy, (err, data) => {
     })
 })
  
-fs.readdir(pathSource, (err, data) => {
+async function readFile() {
+
+   await fs.readdir(pathSource, (err, data) => {
     
     data.forEach(file => {
-        fs.promises.copyFile(path.join(pathSource,file), path.join(pathCopy,file))
+        copyFile(file)
     })
 
     console.log('Папка была копирована');
 })
+}
+
+async function copyFile(file) {
+    await fs.promises.copyFile(path.join(pathSource,file), path.join(pathCopy,file))
+}
+
+readFile() 
